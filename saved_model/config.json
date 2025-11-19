@@ -1,1 +1,1 @@
-{"backcast_length": 50, "forecast_length": 5, "hidden_units": 64, "stack_types": ["trend", "seasonality"], "nb_blocks_per_stack": 2}
+{"backcast_length": 120, "forecast_length": 6, "hidden_units": 64, "stack_types": ["trend", "seasonality"], "nb_blocks_per_stack": 2}

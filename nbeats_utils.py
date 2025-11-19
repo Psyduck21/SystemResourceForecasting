@@ -35,8 +35,8 @@ def load_nbeats_model(save_dir="saved_model", device=None):
 
 def forecast_future(model, scaling_info, input_series, device=None):
     """
-    Forecast the next 5 steps using the N-BEATS model.
-    
+    Forecast the next steps using the N-BEATS model.
+
     Args:
         model: Loaded N-BEATS model.
         scaling_info: Dict containing 'series_min' and 'series_max' for normalization.
@@ -44,7 +44,7 @@ def forecast_future(model, scaling_info, input_series, device=None):
         device: Torch device (CPU or CUDA).
 
     Returns:
-        future_forecast_denorm: 1D numpy array of 5 denormalized forecasted values.
+        future_forecast_denorm: 1D numpy array of denormalized forecasted values.
     """
     if device is None:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -58,7 +58,7 @@ def forecast_future(model, scaling_info, input_series, device=None):
         if current_seq.dim() == 3:
             current_seq = current_seq.squeeze(-1)
         _, forecast_step = model(current_seq)
-        future_forecast = forecast_step.cpu().numpy().reshape(-1)  # length = 5
+        future_forecast = forecast_step.cpu().numpy().reshape(-1)
 
     # Denormalize
     future_forecast_denorm = future_forecast * (series_max - series_min) + series_min

@@ -1,0 +1,7 @@
+{
+  "contamination": 0.05,
+  "n_estimators": 100,
+  "max_features": 8,
+  "window_size": 20,
+  "score_threshold": 0.35
+}
